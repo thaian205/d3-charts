@@ -1,0 +1,207 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 30px;
+    color: #2c3e50;
+}
+
+h1, div#title, h2 {
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: -5px;
+}
+
+div#title, h2 {
+    color: #2980b9;
+}
+
+/* Đảm bảo SVG luôn căn giữa */
+svg {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    display: block;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background: #3498db;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+#csvFileInput, #loadSample {
+    display: block;
+    margin: 0 auto 20px auto;
+    font-size: 16px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #3498db;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#csvFileInput:hover, 
+#loadSample:hover {
+    background: #2980b9;
+}
+
+#table-container {
+    margin: 20px auto;
+    overflow-x: auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    max-width: 1000px;
+}
+
+.subplot h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+/* Xử lý vấn đề căn giữa cho #chart, cho phép ghi đè bởi style="grid" */
+#chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 100px;
+    position: relative;
+}
+
+/* Khi có nhiều subplot (grid layout) */
+#chart[style*="grid"] {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    margin: 0 auto;
+    gap: 30px;
+    position: static; /* Tránh subplot chồng lên nhau */
+}
+
+/* Đảm bảo mỗi subplot đều định vị đúng */
+.subplot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 15px 10px;
+    margin: 0 auto;
+    max-width: 100%;
+    position: relative; /* Đảm bảo vị trí đúng trong grid */
+    z-index: 1; /* Tránh chồng lên nhau */
+}
+
+/* Đảm bảo SVG trong subplot luôn căn giữa */
+.subplot svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* Legend dưới mỗi chart */
+.subplot .legend-row,
+.subplot .legend-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto 0;
+    width: 100%;
+    overflow-x: auto;
+    gap: 8px;
+}
+
+/* Tooltip luôn nổi trên cùng */
+.tooltip {
+    z-index: 9999;
+    pointer-events: none;
+    position: absolute;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 13px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Xử lý đặc biệt cho Q11 và Q12 */
+#chart > svg {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    #chart[style*="grid"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .subplot {
+        max-width: 98vw;
+        padding: 8px 2vw;
+    }
+    
+    svg {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    body {
+        padding: 15px;
+    }
+}
+
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 8px;
+  background: #e0e0e0;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  background: #d5d5d5;
+}
+
+.btn.active {
+  background: #4a90e2;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(74,144,226,0.4);
+  transform: translateY(-2px);
+}
